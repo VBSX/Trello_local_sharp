@@ -35,12 +35,12 @@
             // listBox_status_new
             // 
             listBox_status_new.FormattingEnabled = true;
-            listBox_status_new.ItemHeight = 15;
-            listBox_status_new.Location = new Point(78, 78);
+            listBox_status_new.Location = new Point(12, 61);
             listBox_status_new.Name = "listBox_status_new";
-            listBox_status_new.Size = new Size(798, 94);
+            listBox_status_new.Size = new Size(173, 94);
             listBox_status_new.TabIndex = 0;
             listBox_status_new.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+
             // 
             // Form1
             // 

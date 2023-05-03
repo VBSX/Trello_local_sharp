@@ -28,21 +28,24 @@ namespace Trello_local_sharp.database_handle
 
         }
 
-        public string[] GetItemsOfList(string statusColumn)
+        public List<List<string>> GetItemsOfList(string statusColumn)
         {
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = $"SELECT id, title, description, status_id FROM tbl_tasks WHERE active_status = 'active' AND status_id = '{statusColumn}'";
 
-            var rows = new List<string>();
+            var items = new List<List<string>>(); 
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                var row = $"{reader.GetInt32(0)} {reader.GetString(1)}{reader.GetString(2)} {reader.GetString(3)} ";
-                rows.Add(row);
+                var itemInfo = new List<string>();
+                //itemInfo.Add(reader.GetInt32(0).ToString());
+                itemInfo.Add(reader.GetString(1));
+                itemInfo.Add(reader.GetString(2));
+                //itemInfo.Add(reader.GetString(3));
+                items.Add(itemInfo);
             }
-            Console.WriteLine(rows);
-            return rows.ToArray();
+            return items;
         }
     }
 }
